@@ -129,7 +129,7 @@
 | Carimbo de data/hora de criação do vídeo | object (str) | Upload. |
 | Carimbo de data/hora de publicação do vídeo | object (str) | Publicação. |
 
----
+----
 
 #  music library songs.csv
 | Coluna | Tipo | Explicação |
