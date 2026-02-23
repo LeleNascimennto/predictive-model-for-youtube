@@ -1,187 +1,268 @@
-# Explicação das Colunas dos Arquivos do YouTube (CSV e HTML)
+# Documentação dos Dados do YouTube
 
-Este documento descreve, de forma estruturada, as colunas presentes nos arquivos exportados pelo YouTube, explicando o que cada dado representa e como eles se relacionam.
+## Sumário
 
----
+-   Canais
+-   Chats ao vivo
+-   Histórico do YouTube
+-   Inscrições
+-   Metadados de Vídeos
+-   Biblioteca de Músicas
+-   Playlists
 
-## `canal.csv`
+------------------------------------------------------------------------
 
-| Coluna | Explicação |
-|---|---|
-| ID do canal | Identificador único do canal dentro do YouTube. Funciona como chave de ligação entre todos os outros arquivos. |
-| Título do canal (Original) | Nome oficial exibido publicamente no canal. |
-| Visibilidade do canal | Define se o canal está público, privado ou restrito. |
+# Explicação das Colunas dos Arquivos CSV
 
----
+## canal.csv
 
-## `configurações da página do canal.csv`
+  -----------------------------------------------------------------------
+  Coluna                  Tipo                    Explicação
+  ----------------------- ----------------------- -----------------------
+  ID do canal             object (str)            Identificador único do
+                                                  canal dentro do
+                                                  YouTube.
 
-| Coluna | Explicação |
-|---|---|
-| ID do canal | Referência ao canal ao qual as configurações da página principal pertencem. |
+  Título do canal         object (str)            Nome público do canal.
+  (Original)                                      
 
----
+  Visibilidade do canal   object (str)            Público, privado ou
+                                                  restrito.
+  -----------------------------------------------------------------------
 
-## `configurações de moderação da comunidade do canal.csv`
+## configurações da página do canal.csv
 
-| Coluna | Explicação |
-|---|---|
-| ID do canal | Identifica qual canal possui as regras de moderação da comunidade (comentários, chat e interações). |
+  Coluna        Tipo           Explicação
+  ------------- -------------- ----------------------
+  ID do canal   object (str)   Referência ao canal.
 
----
+## configurações de moderação da comunidade do canal.csv
 
-## `configurações de URL do canal.csv`
+  Coluna        Tipo           Explicação
+  ------------- -------------- ------------------------------------
+  ID do canal   object (str)   Canal ao qual as regras pertencem.
 
-| Coluna | Explicação |
-|---|---|
-| ID do canal | Identificador do canal. |
-| Nome do URL curto 1 do canal | Nome personalizado usado para gerar o link curto do canal (ex: `youtube.com/@nome`). |
+## configurações de URL do canal.csv
 
----
+  -----------------------------------------------------------------------
+  Coluna                  Tipo                    Explicação
+  ----------------------- ----------------------- -----------------------
+  ID do canal             object (str)            Identificador do canal.
 
-## `dados de recursos do canal.csv`
+  Nome do URL curto 1 do  object (str)            Nome usado no link
+  canal                                           curto.
+  -----------------------------------------------------------------------
 
-| Coluna | Explicação |
-|---|---|
-| ID do canal | Identificador do canal. |
-| Moderação automática do canal no chat ao vivo | Indica se o YouTube aplica filtros automáticos no chat de transmissões ao vivo. |
-| Tipo de comentários permitidos padrão do vídeo | Configuração padrão de comentários aplicada aos vídeos. |
-| Público-alvo padrão do vídeo | Define se o conteúdo é voltado para crianças, adultos ou não definido. |
-| Licença padrão do vídeo | Tipo de licença aplicada automaticamente aos vídeos publicados. |
-| Latitude do local padrão do vídeo | Coordenada geográfica padrão associada aos vídeos. |
-| Longitude do local padrão do vídeo | Coordenada geográfica padrão associada aos vídeos. |
+## dados de recursos do canal.csv
 
----
+  -----------------------------------------------------------------------
+  Coluna                  Tipo                    Explicação
+  ----------------------- ----------------------- -----------------------
+  ID do canal             object (str)            Identificador do canal.
 
-## `imagens do canal.csv`
+  Moderação automática do object (str)            Filtros automáticos no
+  canal no chat ao vivo                           chat.
 
-| Coluna | Explicação |
-|---|---|
-| Criar carimbo de data/hora | Momento exato em que a imagem do canal foi registrada ou atualizada na plataforma. |
-| URL de conteúdo completo da imagem do canal | Endereço onde a imagem de perfil do canal está armazenada nos servidores do YouTube. |
+  Tipo de comentários     object (str)            Configuração padrão de
+  permitidos padrão do                            comentários.
+  vídeo                                           
 
----
+  Público-alvo padrão do  object (str)            Público
+  vídeo                                           infantil/adulto.
 
-# `Chats ao vivo.csv` — Explicação das Colunas
+  Licença padrão do vídeo object (str)            Licença aplicada.
 
-| Coluna | Explicação |
-|---|---|
-| ID do chat ao vivo | Identificador único de cada mensagem enviada no chat durante a live. |
-| ID do canal | Identifica qual canal estava realizando a transmissão ao vivo. |
-| Marcação de tempo da criação do chat ao vivo | Data e hora exata (timestamp) em que a mensagem foi enviada no chat. |
-| Preço | Indica se a mensagem foi enviada como Super Chat (pago). Valor 0 significa que não houve pagamento. |
-| ID do vídeo | Identificador do vídeo (live) onde o chat ocorreu. |
-| Texto do chat ao vivo | Conteúdo textual da mensagem enviado no chat, armazenado em formato estruturado (JSON). |
+  Latitude do local       int64                   Coordenada geográfica.
+  padrão do vídeo                                 
 
----
+  Longitude do local      int64                   Coordenada geográfica.
+  padrão do vídeo                                 
+  -----------------------------------------------------------------------
 
-# Histórico do YouTube — Arquivos HTML
+## imagens do canal.csv
 
-## `histórico de pesquisa.html`
+  -----------------------------------------------------------------------
+  Coluna                  Tipo                    Explicação
+  ----------------------- ----------------------- -----------------------
+  Criar Carimbo de        object (str)            Momento da atualização
+  data/hora                                       da imagem.
 
-| Coluna | Explicação |
-|---|---|
-| tipo | Indica o tipo de ação realizada (ex: pesquisa feita na barra do YouTube). |
-| titulo | Texto pesquisado pelo usuário. |
-| url | Link relacionado ao resultado da pesquisa. |
-| data | Data e hora exata em que a pesquisa foi realizada. |
+  URL de conteúdo         object (str)            Endereço da imagem.
+  completo da imagem do                           
+  canal                                           
+  -----------------------------------------------------------------------
 
----
+------------------------------------------------------------------------
 
-## `histórico-de-visualização.html`
+# Chats ao vivo.csv
 
-| Coluna | Explicação |
-|---|---|
-| tipo | Tipo de ação registrada (visualização de vídeo). |
-| titulo | Título do vídeo assistido. |
-| url | Link do canal ou do vídeo assistido. |
-| data | Data e hora exata da visualização, incluindo o fuso horário. |
+  -----------------------------------------------------------------------
+  Coluna                  Tipo                    Explicação
+  ----------------------- ----------------------- -----------------------
+  ID do chat ao vivo      object (str)            Identificador da
+                                                  mensagem.
 
----
+  ID do canal             object (str)            Canal da transmissão.
 
-# `inscrições.csv` — Explicação das Colunas
+  Marcação de tempo da    object (str)            Data e hora da
+  criação do chat ao vivo                         mensagem.
 
-| Coluna | Explicação |
-|---|---|
-| ID do canal | Identificador único do canal no YouTube. |
-| URL do canal | Endereço direto para a página do canal. |
-| Título do canal | Nome público do canal no qual o usuário está inscrito. |
+  Preço                   int64                   Super Chat pago ou não.
 
----
+  ID do vídeo             object (str)            Live associada.
 
-# Metadados dos Vídeos — Arquivos CSV
+  Texto do chat ao vivo   object (str)            Conteúdo da mensagem.
+  -----------------------------------------------------------------------
 
-## `gravações de vídeo.csv`
+------------------------------------------------------------------------
 
-| Coluna | Explicação |
-|---|---|
-| ID do vídeo | Identificador único do vídeo. |
-| Altitude de gravação do vídeo | Altitude geográfica associada ao local de gravação. |
-| Latitude da gravação do vídeo | Coordenada de latitude do local de gravação. |
-| Longitude da gravação do vídeo | Coordenada de longitude do local de gravação. |
+#  Histórico do YouTube
 
----
+## histórico de pesquisa.html
 
-## `textos de vídeo.csv`
+  Coluna   Tipo           Explicação
+  -------- -------------- ---------------------
+  tipo     object (str)   Tipo de ação.
+  titulo   object (str)   Pesquisa realizada.
+  url      object (str)   Link relacionado.
+  data     object (str)   Data e hora.
 
-| Coluna | Explicação |
-|---|---|
-| ID do vídeo | Identificador único do vídeo. |
-| Carimbo de data/hora da criação do texto do vídeo | Momento de criação do título e descrição. |
-| Segmentos 1 do texto de descrição do vídeo | Conteúdo textual da descrição. |
-| Segmentos 1 do texto do título do vídeo | Conteúdo textual do título. |
-| Carimbo de data/hora da atualização do texto do vídeo | Momento da última alteração. |
+## histórico-de-visualização.html
 
----
+  Coluna   Tipo           Explicação
+  -------- -------------- -------------------------
+  tipo     object (str)   Tipo de ação.
+  titulo   object (str)   Vídeo assistido.
+  url      object (str)   Link do vídeo ou canal.
+  data     object (str)   Data e hora.
 
-## `vídeos.csv`
+------------------------------------------------------------------------
 
-| Coluna | Explicação |
-|---|---|
-| ID do vídeo | Identificador único do vídeo. |
-| Duração aproximada (ms) | Tempo total do vídeo em milissegundos. |
-| Categoria do vídeo | Categoria definida pelo YouTube. |
-| Descrição do vídeo (original) | Texto original da descrição. |
-| ID do canal | Identificador do canal que publicou o vídeo. |
-| Título do vídeo (original) | Título original do vídeo. |
-| Privacidade | Público, privado ou não listado. |
-| Estado do vídeo | Situação do processamento do vídeo. |
-| Carimbo de data/hora de criação do vídeo | Momento exato do upload. |
-| Carimbo de data/hora de publicação | Momento em que o vídeo se tornou público. |
+#  inscrições.csv
 
----
+  Coluna            Tipo           Explicação
+  ----------------- -------------- -----------------
+  ID do canal       object (str)   Canal inscrito.
+  URL do canal      object (str)   Link do canal.
+  Título do canal   object (str)   Nome público.
 
-# `music library songs.csv`
+------------------------------------------------------------------------
 
-| Coluna | Explicação |
-|---|---|
-| ID do vídeo | Identificador único da música/vídeo. |
-| Song Title | Nome da música. |
-| Album Title | Nome do álbum. |
-| Artist Name 1–10 | Artistas participantes da música. |
+#  Metadados dos Vídeos
 
----
+## gravações de vídeo.csv
 
-# Playlists — Estrutura e Vídeos
+  Coluna                           Tipo           Explicação
+  -------------------------------- -------------- -------------------------
+  ID do vídeo                      object (str)   Identificador do vídeo.
+  Altitude de gravação do vídeo    int64          Altitude da gravação.
+  Latitude da gravação do vídeo    int64          Latitude.
+  Longitude da gravação do vídeo   int64          Longitude.
 
-## `playlists.csv`
+## textos de vídeo.csv
 
-| Coluna | Explicação |
-|---|---|
-| Código da playlist | Identificador único da playlist. |
-| Adicionar novos vídeos ao topo | Define a posição automática de novos vídeos. |
-| Título da playlist (original) | Nome criado pelo usuário. |
-| Idioma do título da playlist (original) | Idioma do título. |
-| Carimbo de data/hora da criação da playlist | Momento de criação. |
-| Carimbo de data/hora da atualização da playlist | Última modificação. |
-| Ordem dos vídeos da playlist | Manual ou automática. |
-| Visibilidade da playlist | Pública, privada ou não listada. |
+  -----------------------------------------------------------------------
+  Coluna                  Tipo                    Explicação
+  ----------------------- ----------------------- -----------------------
+  ID do vídeo             object (str)            Identificador.
 
----
+  Carimbo de data/hora da object (str)            Criação do texto.
+  criação do texto do                             
+  vídeo                                           
 
-## `Vídeos da playlist <nome>.csv`
+  Segmentos 1 do texto de object (str)            Descrição.
+  descrição do vídeo                              
 
-| Coluna | Explicação |
-|---|---|
-| ID do vídeo | Identificador do vídeo adicionado à playlist. |
-| Carimbo de data/hora da criação do vídeo da playlist | Momento em que o vídeo foi adicionado. |
+  Segmentos 1 do texto do object (str)            Título.
+  título do vídeo                                 
+
+  Carimbo de data/hora da object (str)            Última edição.
+  atualização do texto do                         
+  vídeo                                           
+  -----------------------------------------------------------------------
+
+## vídeos.csv
+
+  -----------------------------------------------------------------------
+  Coluna                  Tipo                    Explicação
+  ----------------------- ----------------------- -----------------------
+  ID do vídeo             object (str)            Identificador.
+
+  Duração aproximada (ms) int64                   Duração.
+
+  Categoria do vídeo      object (str)            Categoria.
+
+  Descrição do vídeo      object (str)            Descrição original.
+  (original)                                      
+
+  ID do canal             object (str)            Canal.
+
+  Título do vídeo         object (str)            Título.
+  (original)                                      
+
+  Privacidade             object (str)            Público/privado.
+
+  Estado do vídeo         object (str)            Processamento.
+
+  Carimbo de data/hora de object (str)            Upload.
+  criação do vídeo                                
+
+  Carimbo de data/hora de object (str)            Publicação.
+  publicação do vídeo                             
+  -----------------------------------------------------------------------
+
+------------------------------------------------------------------------
+
+#  music library songs.csv
+
+  Coluna             Tipo           Explicação
+  ------------------ -------------- -------------------------
+  ID do vídeo        object (str)   Música/vídeo.
+  Song Title         object (str)   Música.
+  Album Title        object (str)   Álbum.
+  Artist Name 1-10   object (str)   Artistas participantes.
+
+------------------------------------------------------------------------
+
+#  Playlists
+
+## playlists.csv
+
+  -----------------------------------------------------------------------
+  Coluna                  Tipo                    Explicação
+  ----------------------- ----------------------- -----------------------
+  Código da playlist      object (str)            Identificador.
+
+  Adicionar novos vídeos  object (str)            Ordem automática.
+  ao topo                                         
+
+  Título da playlist      object (str)            Nome.
+  (original)                                      
+
+  Idioma do título da     object (str)            Idioma.
+  playlist (original)                             
+
+  Carimbo de data/hora da object (str)            Criação.
+  criação da playlist                             
+
+  Carimbo de data/hora da object (str)            Atualização.
+  atualização da playlist                         
+
+  Ordem dos vídeos da     object (str)            Ordem.
+  playlist                                        
+
+  Visibilidade da         object (str)            Pública/privada.
+  playlist                                        
+  -----------------------------------------------------------------------
+
+## Vídeos da playlist
+
+  -----------------------------------------------------------------------
+  Coluna                  Tipo                    Explicação
+  ----------------------- ----------------------- -----------------------
+  ID do vídeo             object (str)            Vídeo.
+
+  Carimbo de data/hora da object (str)            Data de adição.
+  criação do vídeo da                             
+  playlist                                        
+  -----------------------------------------------------------------------
