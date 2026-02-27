@@ -74,22 +74,23 @@ def recomendar_top_n(video, periodo, modelo, le_titulo, le_proximo, le_periodo, 
 
     return list(zip(top_n_links, top_n_probs))
 
-video_atual = input("Insira o link do vídeo: ")
-periodo_atual = input("Informe o período (manhã/tarde/noite/madrugada): ")
+if __name__ == "__main__":
+    video_atual = input("Insira o link do vídeo: ")
+    periodo_atual = input("Informe o período (manhã/tarde/noite/madrugada): ")
 
-top_videos = recomendar_top_n(
-    video_atual,
-    periodo_atual,
-    modelo,
-    le_titulo,
-    le_proximo,
-    le_periodo,
-    n=3
-)
+    top_videos = recomendar_top_n(
+        video_atual,
+        periodo_atual,
+        modelo,
+        le_titulo,
+        le_proximo,
+        le_periodo,
+        n=3
+    )
 
-if top_videos:
-    print("Top 3 próximos vídeos recomendados:")
-    for link, prob in top_videos:
-        print(link, "→", prob)
-else:
-    print("Vídeo não encontrado no modelo.")
+    if top_videos:
+        print("Top 3 próximos vídeos recomendados:")
+        for link, prob in top_videos:
+            print(link, "→", prob)
+    else:
+        print("Vídeo não encontrado no modelo.")
