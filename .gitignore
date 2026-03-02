@@ -8,6 +8,5 @@
 
 # Ignorar arquivos de segredo e bancos de dados locais
 database/**/client_secret.json
-database/**/*.csv
 .ipynb_checkpoints/
 __pycache__/
